@@ -48,7 +48,7 @@
         left: 12px;
         font-size: 0.7rem;
         color: #ff0000;
-        opacity: 0.8;
+        opacity: 0.85;
     }
 
     /* Camera Indicator */
@@ -79,7 +79,8 @@
 
     .flash {
         position: fixed;
-        top: 0; left: 0;
+        top: 0;
+        left: 0;
         width: 100%;
         height: 100%;
         background: red;
@@ -111,6 +112,7 @@
 <div class="top-left">Made by: JP Duvenhage</div>
 
 <h1>⚠ SYSTEM BREACH DETECTED ⚠</h1>
+
 <div id="timer">10:00:00</div>
 
 <div style="color:#ff6666; font-size:0.9rem;">
@@ -119,7 +121,9 @@
     Uploading Personal Data...
 </div>
 
-<div class="bottom-left">Don't share link this does contain a virus</div>
+<div class="bottom-left">
+    Don't share link this does contain a virus
+</div>
 
 <div class="camera-indicator">
     <div class="dot"></div>
@@ -143,18 +147,8 @@
 
         secondsLeft--;
 
-        // Reveal prank after 20 seconds
-        if (secondsLeft <= (10 * 60 * 60) - 20) {
+        if (secondsLeft <= 0) {
             clearInterval(countdown);
-            setTimeout(() => {
-                document.body.innerHTML = `
-                    <div style="color:white; font-family:monospace; text-align:center; padding:20px;">
-                        <h1 style="color:lime;">😂 PRANK COMPLETE 😂</h1>
-                        <p>No cameras, no virus, no hacks.</p>
-                        <p>You got played.</p>
-                    </div>
-                `;
-            }, 20000);
         }
 
     }, 1000);
