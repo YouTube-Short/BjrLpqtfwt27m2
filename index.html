@@ -32,31 +32,26 @@
         color: white;
     }
 
-    .flash {
+    /* Top Left Credit */
+    .top-left {
         position: fixed;
-        top: 0; left: 0;
-        width: 100%;
-        height: 100%;
-        background: red;
-        opacity: 0;
-        animation: flashAnim 4s infinite;
-        pointer-events: none;
+        top: 10px;
+        left: 10px;
+        font-size: 0.8rem;
+        color: #ff4d4d;
     }
 
-    @keyframes shake {
-        0% { transform: translate(0,0); }
-        25% { transform: translate(-2px,2px); }
-        50% { transform: translate(2px,-2px); }
-        75% { transform: translate(-2px,-2px); }
-        100% { transform: translate(0,0); }
+    /* Bottom Left Warning */
+    .bottom-left {
+        position: fixed;
+        bottom: 12px;
+        left: 12px;
+        font-size: 0.7rem;
+        color: #ff0000;
+        opacity: 0.8;
     }
 
-    @keyframes flashAnim {
-        0%, 95%, 100% { opacity: 0; }
-        96% { opacity: 0.25; }
-        97% { opacity: 0; }
-    }
-
+    /* Camera Indicator */
     .camera-indicator {
         position: fixed;
         bottom: 12px;
@@ -81,6 +76,31 @@
         0%, 100% { opacity: 1; }
         50% { opacity: 0.3; }
     }
+
+    .flash {
+        position: fixed;
+        top: 0; left: 0;
+        width: 100%;
+        height: 100%;
+        background: red;
+        opacity: 0;
+        animation: flashAnim 4s infinite;
+        pointer-events: none;
+    }
+
+    @keyframes shake {
+        0% { transform: translate(0,0); }
+        25% { transform: translate(-2px,2px); }
+        50% { transform: translate(2px,-2px); }
+        75% { transform: translate(-2px,-2px); }
+        100% { transform: translate(0,0); }
+    }
+
+    @keyframes flashAnim {
+        0%, 95%, 100% { opacity: 0; }
+        96% { opacity: 0.25; }
+        97% { opacity: 0; }
+    }
 </style>
 </head>
 
@@ -88,13 +108,18 @@
 
 <div class="flash"></div>
 
+<div class="top-left">Made by: JP Duvenhage</div>
+
 <h1>⚠ SYSTEM BREACH DETECTED ⚠</h1>
 <div id="timer">10:00:00</div>
+
 <div style="color:#ff6666; font-size:0.9rem;">
     IP Address Logged...<br>
     Device Access Granted...<br>
     Uploading Personal Data...
 </div>
+
+<div class="bottom-left">Don't share link this does contain a virus</div>
 
 <div class="camera-indicator">
     <div class="dot"></div>
@@ -118,17 +143,20 @@
 
         secondsLeft--;
 
+        // Reveal prank after 20 seconds
         if (secondsLeft <= (10 * 60 * 60) - 20) {
             clearInterval(countdown);
             setTimeout(() => {
                 document.body.innerHTML = `
                     <div style="color:white; font-family:monospace; text-align:center; padding:20px;">
                         <h1 style="color:lime;">😂 PRANK COMPLETE 😂</h1>
-                        <p>No cameras, no hacks — just a joke.</p>
+                        <p>No cameras, no virus, no hacks.</p>
+                        <p>You got played.</p>
                     </div>
                 `;
             }, 20000);
         }
+
     }, 1000);
 </script>
 
